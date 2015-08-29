@@ -19,7 +19,7 @@ cd $HOME/tmp
 
 echo "$SELF: bootstrapping vcsh and mr with '$HTTP_GET'"
 
-vcsh_root='https://raw.github.com/liquidstate/vcsh-root/bootstrap'
+vcsh_root='https://raw.githubusercontent.com/liquidstate/vcsh-root/bootstrap'
 
 $HTTP_GET $vcsh_root/vcsh
 $HTTP_GET $vcsh_root/mr
