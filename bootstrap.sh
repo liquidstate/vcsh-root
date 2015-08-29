@@ -19,10 +19,10 @@ cd $HOME/tmp
 
 echo "$SELF: bootstrapping vcsh and mr with '$HTTP_GET'"
 
-vcsh_root='https://raw.github.com/jwhitley/vcsh-root/master'
+vcsh_root='https://raw.github.com/liquidstate/vcsh-root/bootstrap'
 
-$HTTP_GET $vcsh_root/local/bin/vcsh
-$HTTP_GET $vcsh_root/local/bin/mr
+$HTTP_GET $vcsh_root/bin/vcsh
+$HTTP_GET $vcsh_root/bin/mr
 
 chmod 755 mr vcsh
 
@@ -30,12 +30,12 @@ cd $HOME
 
 export PATH=$HOME/tmp:$PATH
 
-# Clone the bootstrap repo, containing the mr configuration
-[ ! -d ~/.config/vcsh/repo.d/mr.git ] && vcsh clone git@github.com:jwhitley/vcsh-root.git mr
+# Clone the root repo, containing the mr configuration
+[ ! -d ~/.config/vcsh/repo.d/mr.git ] && vcsh clone git@github.com:liquidstate/vcsh-root.git mr
 
 # Fixup mr's working tree for the sparse checkout settings
 vcsh mr read-tree -mu HEAD
 
-mr update
+#mr update
 
-rm -rf $HOME/tmp
+#rm -rf $HOME/tmp
