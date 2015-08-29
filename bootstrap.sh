@@ -36,6 +36,6 @@ export PATH=$HOME/tmp:$PATH
 # Fixup mr's working tree for the sparse checkout settings
 vcsh mr read-tree -mu HEAD
 
-#mr update
+mr update
 
-#rm -rf $HOME/tmp
+rm -rf $HOME/tmp
