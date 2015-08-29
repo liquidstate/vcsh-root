@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-SELF=$(basename 0)
+SELF=$(basename $0)
 
 fatal () {
   echo "$SELF: fatal $1" >&2
