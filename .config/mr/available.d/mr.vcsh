@@ -1,2 +1,2 @@
 [$HOME/.config/vcsh/repo.d/mr.git]
-checkout = vcsh clone git@github.com:liquidstate/shell-root.git mr
+checkout = vcsh clone git@github.com:liquidstate/vcsh-root.git mr
