@@ -21,8 +21,8 @@ echo "$SELF: bootstrapping vcsh and mr with '$HTTP_GET'"
 
 vcsh_root='https://raw.github.com/liquidstate/vcsh-root/bootstrap'
 
-$HTTP_GET $vcsh_root/bin/vcsh
-$HTTP_GET $vcsh_root/bin/mr
+$HTTP_GET $vcsh_root/vcsh
+$HTTP_GET $vcsh_root/mr
 
 chmod 755 mr vcsh
 
