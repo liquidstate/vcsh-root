@@ -1,0 +1,3 @@
+[$HOME/.src/vcsh]
+checkout = git clone https://github.com/RichiH/vcsh.git
+fixups = rm -f /bin/vcsh && ln -s $HOME/.src/myrepos/vcsh $HOME/bin/vcsh

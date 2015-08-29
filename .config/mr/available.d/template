@@ -1,0 +1,2 @@
+[$HOME/.config/vcsh/repo.d/REPO_NAME.git]
+checkout = vcsh clone git@github.com:liquidstate/dotfiles-REPO_NAME.git REPO_NAME
