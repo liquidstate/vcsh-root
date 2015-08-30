@@ -1,5 +1,2 @@
 [$HOME/.nano]
 checkout = git clone https://github.com/scopatz/nanorc.git .nano
-
-[$HOME/.config/vcsh/repo.d/nanorc.git]
-checkout = vcsh clone git@github.com:liquidstate/dotfiles-nanorc.git nanorc
