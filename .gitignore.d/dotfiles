@@ -5,6 +5,8 @@
 !/.bashrc.d/00_osx
 !/.bashrc.d/appdefaults
 !/.bashrc.d/bash
+!/.bashrc.d/cddown
+!/.bashrc.d/cdup
 !/.bashrc.d/colours
 !/.bashrc.d/complete
 !/.bashrc.d/git
@@ -40,6 +42,7 @@
 !/bin/fixperms
 !/bin/getcertnames
 !/bin/ginit
+!/bin/git-branch
 !/bin/histogram
 !/bin/httpdump
 !/bin/httpsniff
@@ -74,6 +77,7 @@
 !/bin/mron
 !/bin/myip
 !/bin/ptree
+!/bin/pushtracked
 !/bin/realpath
 !/bin/rot13
 !/bin/secs
