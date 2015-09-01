@@ -1,3 +1,0 @@
-[$HOME/.src/myrepos]
-checkout = git clone https://github.com/joeyh/myrepos.git
-fixups = mkdir -p $HOME/bin && rm -f $HOME/bin/mr && ln -s $HOME/.src/myrepos/mr $HOME/bin/mr

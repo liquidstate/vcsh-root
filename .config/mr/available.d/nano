@@ -1,2 +1,0 @@
-[$HOME/.nano]
-checkout = git clone https://github.com/scopatz/nanorc.git .nano

@@ -1,4 +1,40 @@
 [DEFAULT]
 git_gc = git gc "$@"
 
-include = cat ~/.config/mr/config.d/*
+## These might be useful in the future (left as an example)
+lib =
+	hostname="$(hostname)"
+	os="$(uname)"
+
+## myrepos sources
+[$HOME/.src/myrepos]
+checkout = git clone https://github.com/joeyh/myrepos.git
+fixups = mkdir -p $HOME/bin && rm -f $HOME/bin/mr && ln -s $HOME/.src/myrepos/mr $HOME/bin/mr
+order = 10
+
+## vcsh sources
+[$HOME/.src/vcsh]
+checkout = git clone https://github.com/RichiH/vcsh.git
+fixups = mkdir -p $HOME/bin && rm -f $HOME/bin/vcsh && ln -s $HOME/.src/vcsh/vcsh $HOME/bin/vcsh
+order = 15
+
+## vcsh configuration and hooks
+[$HOME/.config/vcsh/repo.d/mr.git]
+checkout = vcsh clone git@github.com:liquidstate/vcsh-root.git mr
+order = 20
+
+[$HOME/.config/vcsh/repo.d/dotfiles.git]
+checkout = vcsh clone git@github.com:liquidstate/dotfiles.git dotfiles
+order = 25
+
+## nano syntax highlighting
+[$HOME/.nano-syntax]
+checkout = git clone https://github.com/scopatz/nanorc.git .nano-syntax
+order = 50
+
+## dummy target, to run fixups at the end of an update
+[$HOME/tmp]
+checkout = mkdir -p $HOME/tmp
+fixups = $HOME/bin/fixups
+status = :
+order = 100
