@@ -37,4 +37,5 @@ order = 50
 checkout = mkdir -p $HOME/tmp
 fixups = $HOME/bin/fixups
 status = :
+update = :
 order = 100
