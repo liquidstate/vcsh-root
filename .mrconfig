@@ -35,7 +35,7 @@ order = 50
 ## dummy target, to run fixups at the end of an update
 [$HOME/tmp]
 checkout = mkdir -p $HOME/tmp
-fixups = $HOME/bin/fixups
+fixups = $HOME/bin/mr-fixups
 status = :
 update = :
 order = 100
