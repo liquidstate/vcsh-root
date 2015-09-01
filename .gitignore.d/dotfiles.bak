@@ -28,6 +28,13 @@
 !/bin/Vagrantfile.template
 !/bin/calc
 !/bin/curlheader
+!/bin/echo-alert
+!/bin/echo-bot
+!/bin/echo-error
+!/bin/echo-info
+!/bin/echo-ok
+!/bin/echo-running
+!/bin/echo-warning
 !/bin/fe
 !/bin/ff
 !/bin/fixperms
@@ -74,5 +81,6 @@
 !/bin/unrpm
 !/bin/urlencode
 !/bin/vcsh-all
+!/bin/vcsh-gitignore
 !/bin/vinit
 !/bin/webserver
