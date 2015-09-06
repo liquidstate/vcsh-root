@@ -3,8 +3,14 @@ git_gc = git gc "$@"
 
 ## These might be useful in the future (left as an example)
 lib =
-	hostname="$(hostname)"
-	os="$(uname)"
+    hostname="$(hostname)"
+    mymac() {
+        if [[ $hostname == Bryans-* ]]; then
+            return 1;
+        else
+            return 0;
+        fi
+    }
 
 ## myrepos sources
 [$HOME/.src/myrepos]
