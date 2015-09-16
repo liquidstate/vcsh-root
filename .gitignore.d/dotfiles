@@ -57,8 +57,11 @@
 !/bin/calc
 !/bin/curlheader
 !/bin/docker
+!/bin/docker-gc
+!/bin/echo-action
 !/bin/echo-alert
 !/bin/echo-bot
+!/bin/echo-debug
 !/bin/echo-error
 !/bin/echo-info
 !/bin/echo-ok

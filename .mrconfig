@@ -45,6 +45,7 @@ order = 50
 ## docker garbage collection
 [$HOME/.src/docker-gc]
 checkout = git clone https://github.com/spotify/docker-gc.git docker-gc
+fixups = chmod +x $HOME/.src/docker-gc/docker-gc
 order = 50
 
 ## dummy target, to run fixups at the end of an update
