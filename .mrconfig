@@ -42,6 +42,11 @@ order = 30
 checkout = git clone https://github.com/scopatz/nanorc.git .nano-syntax
 order = 50
 
+## docker garbage collection
+[$HOME/.src/docker-gc]
+checkout = git clone https://github.com/spotify/docker-gc.git docker-gc
+order = 50
+
 ## dummy target, to run fixups at the end of an update
 [$HOME/tmp]
 checkout = mkdir -p $HOME/tmp
