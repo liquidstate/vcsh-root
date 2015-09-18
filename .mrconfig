@@ -1,16 +1,9 @@
 [DEFAULT]
 git_gc = git gc "$@"
 
-## These might be useful in the future (left as an example)
 lib =
     hostname="$(hostname)"
-    mymac() {
-        if [[ $hostname == Bryans-* ]]; then
-            return 1;
-        else
-            return 0;
-        fi
-    }
+    canreach() { ping -q -w3 -c1 $1 &>/dev/null; }
 
 ## myrepos sources
 [$HOME/.src/myrepos]
@@ -35,7 +28,7 @@ order = 25
 
 [$HOME/.config/vcsh/repo.d/work.git]
 checkout = vcsh clone git@vdcbase.bskyb.com:bro17/dotfiles-work.git work
-skip = mac
+skip = ! canreach vdcbase.bskyb.com
 order = 30
 
 ## nano syntax highlighting
