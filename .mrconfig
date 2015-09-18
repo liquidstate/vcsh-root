@@ -35,6 +35,7 @@ order = 25
 
 [$HOME/.config/vcsh/repo.d/work.git]
 checkout = vcsh clone git@vdcbase.bskyb.com:bro17/dotfiles-work.git work
+skip = mac
 order = 30
 
 ## nano syntax highlighting
