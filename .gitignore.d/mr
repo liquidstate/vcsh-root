@@ -10,8 +10,6 @@
 !/.config/vcsh/hooks-enabled/pre-upgrade.00-sparse-checkout
 !/.config/vcsh/hooks-enabled/pre-upgrade.10-pull-rebase
 !/.gitignore.d
-!/.gitignore.d/dotfiles
-!/.gitignore.d/dotfiles.bak
 !/.gitignore.d/mr
 !/.gitignore.d/mr.bak
 !/.mrconfig
