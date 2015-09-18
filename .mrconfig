@@ -30,10 +30,10 @@ checkout = vcsh clone git@github.com:liquidstate/vcsh-root.git mr
 order = 20
 
 [$HOME/.config/vcsh/repo.d/dotfiles.git]
-checkout = vcsh clone git@github.com:liquidstate/dotfiles.git home
+checkout = vcsh clone git@github.com:liquidstate/dotfiles.git dotfiles
 order = 25
 
-[$HOME/.config/vcsh/repo.d/dotfiles-work.git]
+[$HOME/.config/vcsh/repo.d/work.git]
 checkout = vcsh clone git@vdcbase.bskyb.com:bro17/dotfiles-work.git work
 order = 30
 
