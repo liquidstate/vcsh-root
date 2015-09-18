@@ -31,7 +31,7 @@ function info() {
     col_reset="\e[0m";
 
     echo -en "$col_green[info] $col_white"
-    echo "$SELF - $@"
+    echo "$@"
     echo -en "$col_reset"
 }
 
@@ -42,7 +42,7 @@ function fatal() {
     col_reset="\e[0m";
 
     echo -en "$col_red[error] $col_white"
-    echo "$SELF - $@"
+    echo "$@"
     echo -en "$col_reset"
     exit $2
 }
