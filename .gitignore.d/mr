@@ -13,3 +13,4 @@
 !/.gitignore.d/mr
 !/.gitignore.d/mr.bak
 !/.mrconfig
+!/README.md
