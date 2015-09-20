@@ -37,8 +37,8 @@ checkout = vcsh clone git@github.com:liquidstate/dotfiles-hub.git hub
 order = 50
 
 ## nano syntax highlighting
-[$HOME/.nano-syntax]
-checkout = git clone https://github.com/scopatz/nanorc.git .nano-syntax
+[$HOME/.nano]
+checkout = git clone https://github.com/scopatz/nanorc.git .nano
 order = 50
 
 ## docker garbage collection
