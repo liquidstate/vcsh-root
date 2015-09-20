@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Where to store files that conflict
+VCSH_CLOBBER_DIR="$HOME/tmp/vcsh_backup/$VCSH_REPO_NAME"
+
+# Count the number of conflicts
+VCSH_CLASHES=0
+
+# move files out of the way
+for object in $(git ls-tree -r "origin/master" | awk '{print $4}'); do
+
+  if test -e "$object"; then
+    if [ $VCSH_CLASHES -eq 0 ]; then
+        echo "**** File conflicts detected. The following existing files have been moved:"
+        VCSH_CLASHES=$((VCSH_CLASHES+1))
+    fi
+
+    # move original to somewhere safe
+    echo " - $HOME/$object -> $VCSH_CLOBBER_DIR/$object"
+    mkdir -p "$(dirname "$VCSH_CLOBBER_DIR/$object")"
+    mv "$HOME/$object" "$VCSH_CLOBBER_DIR/$object"
+  fi
+
+done

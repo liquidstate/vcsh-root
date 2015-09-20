@@ -2,11 +2,13 @@
 !/.config
 !/.config/vcsh
 !/.config/vcsh/hooks-available
+!/.config/vcsh/hooks-available/pre-merge-unclobber
 !/.config/vcsh/hooks-available/pre-upgrade.00-sparse-checkout
 !/.config/vcsh/hooks-available/pre-upgrade.10-pull-rebase
 !/.config/vcsh/hooks-enabled
 !/.config/vcsh/hooks-enabled/mr.post-clone.00-sparse-checkout
 !/.config/vcsh/hooks-enabled/mr.post-clone.10-pull-rebase
+!/.config/vcsh/hooks-enabled/pre-merge-unclobber
 !/.config/vcsh/hooks-enabled/pre-upgrade.00-sparse-checkout
 !/.config/vcsh/hooks-enabled/pre-upgrade.10-pull-rebase
 !/.gitignore.d
