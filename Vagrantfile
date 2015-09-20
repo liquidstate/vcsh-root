@@ -14,7 +14,20 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "centos/7"
 
+#  config.ssh.private_key_path = '~/.ssh/id_rsa'
   config.ssh.forward_agent = true
+
+  config.vm.provision "shell" do |s|
+    ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+    s.inline = <<-SHELL
+      mkdir -p /home/vagrant/.ssh/
+      mkdir -p /root/.ssh/
+      echo "#{ssh_pub_key}" >> /home/vagrant/.ssh/authorized_keys
+      echo "#{ssh_pub_key}" >> /root/.ssh/authorized_keys
+      chmod 600 /home/vagrant/.ssh/authorized_keys
+      chmod 600 /root/.ssh/authorized_keys
+    SHELL
+  end
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -26,29 +39,26 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell" do |s|
-      s.privileged = true
       s.inline = <<-SHELL
-
-      # Add the github.com public ssh key to the global known_hosts file so that
-      # automated github interactions over ssh work correctly in the VM
-      cat > /etc/ssh/ssh_known_hosts <<-GITHUB_PUBLIC_KEY
-# github.com SSH-2.0-libssh-0.6.0
-|1|rlFevnVCygW+FMiWIPMlW6OCpzg=|5D3fkWbkXrK+PT3LjxvNr0XFoC4= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
-# github.com SSH-2.0-libssh-0.6.0
-GITHUB_PUBLIC_KEY
 
       # Install wget
       sudo yum -y install wget
 
       # Install git 1.9 from Software Collections
       sudo ./sync/installgit19.sh
-      source /opt/rh/git19/enable
+      sudo ln -s /opt/rh/git19/root/usr/bin/git /usr/bin/git
+
+      # Add the github.com public ssh key so that automated github
+      # interactions over ssh work correctly in the VM.
+      touch ~/.ssh/known_hosts
+      if ! grep -q '^github.com ' ~/.ssh/known_hosts; then
+          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null;
+      fi
 
       # Run bootsteap script
-      sudo ./sync/bootstrap.sh
+      ./sync/bootstrap.sh
 
-SHELL
+      SHELL
   end
 
 end
-
