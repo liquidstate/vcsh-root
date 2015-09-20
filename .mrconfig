@@ -31,6 +31,11 @@ checkout = vcsh clone git@vdcbase.bskyb.com:bro17/dotfiles-work.git work
 skip = ! canreach vdcbase.bskyb.com
 order = 30
 
+## hub (for git)
+[$HOME/.config/vcsh/repo.d/hub.git]
+checkout = vcsh clone git@github.com:liquidstate/dotfiles-hub.git hub
+order = 50
+
 ## nano syntax highlighting
 [$HOME/.nano-syntax]
 checkout = git clone https://github.com/scopatz/nanorc.git .nano-syntax
