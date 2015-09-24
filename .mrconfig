@@ -4,6 +4,31 @@ git_gc = git gc "$@"
 lib =
     hostname="$(hostname)"
     canreach() { ping -q -w3 -c1 $1 &>/dev/null; }
+    graburl() { mkdir -p $MR_REPO; curl --silent --location --time-cond $2 --output $MR_REPO/$2 --url $1; }
+
+##
+## CONFIGURATION
+##
+
+## vcsh configuration and hooks
+[$HOME/.config/vcsh/repo.d/mr.git]
+checkout = vcsh clone git@github.com:liquidstate/vcsh-root.git mr
+order = 20
+
+## my dotfiles (and too much other stuff!)
+[$HOME/.config/vcsh/repo.d/dotfiles.git]
+checkout = vcsh clone git@github.com:liquidstate/dotfiles.git dotfiles
+order = 25
+
+## work specific stuff
+[$HOME/.config/vcsh/repo.d/work.git]
+checkout = vcsh clone git@vdcbase.bskyb.com:bro17/dotfiles-work.git work
+skip = ! canreach vdcbase.bskyb.com
+order = 30
+
+##
+## SOFTWARE
+##
 
 ## myrepos sources
 [$HOME/.src/myrepos]
@@ -16,20 +41,6 @@ order = 10
 checkout = git clone https://github.com/RichiH/vcsh.git
 fixups = mkdir -p $HOME/bin && rm -f $HOME/bin/vcsh && ln -s $HOME/.src/vcsh/vcsh $HOME/bin/vcsh
 order = 15
-
-## vcsh configuration and hooks
-[$HOME/.config/vcsh/repo.d/mr.git]
-checkout = vcsh clone git@github.com:liquidstate/vcsh-root.git mr
-order = 20
-
-[$HOME/.config/vcsh/repo.d/dotfiles.git]
-checkout = vcsh clone git@github.com:liquidstate/dotfiles.git dotfiles
-order = 25
-
-[$HOME/.config/vcsh/repo.d/work.git]
-checkout = vcsh clone git@vdcbase.bskyb.com:bro17/dotfiles-work.git work
-skip = ! canreach vdcbase.bskyb.com
-order = 30
 
 ## hub (for git)
 [$HOME/.config/vcsh/repo.d/hub.git]
@@ -46,6 +57,11 @@ order = 50
 checkout = git clone https://github.com/spotify/docker-gc.git docker-gc
 fixups = chmod +x $HOME/.src/docker-gc/docker-gc
 order = 50
+
+## simple shell interface for interacting with REST services
+[$HOME/.src/resty]
+checkout = git clone https://github.com/micha/resty.git resty
+fixups = cp $HOME/.src/resty/resty $HOME/.bashrc.d/
 
 ## dummy target, to run fixups at the end of an update
 [$HOME/tmp]
